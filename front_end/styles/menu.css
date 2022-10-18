@@ -1,0 +1,10 @@
+header  {
+    background-color: rgb(194, 99, 4);
+    margin: 0;
+    height: 100px;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding-left: 30px;
+    align-items: center;
+    display: inline-flex;
+}
