@@ -1,10 +1,51 @@
 header  {
-    background-color: rgb(194, 99, 4);
+    background-color: #02b59b;
     margin: 0;
     height: 100px;
+    width: 100%;
     position: absolute;
     top: 0; left: 0; right: 0;
-    padding-left: 30px;
     align-items: center;
     display: inline-flex;
+}
+
+input[type=text] {
+    height: 30px;
+    width: 200px;
+    border: 3.5px solid #0e469f;
+    border-radius: 4px;
+    box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
+
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+input[type=text]:focus {
+    outline: none;
+    border: 3.5px solid #2a77f3;
+}
+
+input[type=text]:hover {
+box-shadow: 0 3px 20px rgba(255, 255, 255, 0.714);
+}
+
+#btnItinerary {
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border: none;
+    padding: 0 46px;
+    height: 40px;
+    border-radius: 7px;
+    background-color: #0e469f;        
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
+
+    transition: 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
+}
+
+#btnItinerary:hover{
+    background: #195cc7;
+    box-shadow: 0 3px 20px rgba(255, 255, 255, 0.581);
 }
