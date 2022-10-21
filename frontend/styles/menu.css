@@ -1,3 +1,5 @@
+/* Header */
+
 header  {
     background-color: #02b59b;
     margin: 0;
@@ -9,13 +11,15 @@ header  {
     display: inline-flex;
 }
 
+/* Input text */
+
 input[type=text] {
+    font-family: Tahoma, sans-serif;
     height: 30px;
     width: 200px;
     border: 3.5px solid #0e469f;
     border-radius: 4px;
     box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
-
     -webkit-transition: .2s ease-in-out;
     transition: .2s ease-in-out;
 }
@@ -26,8 +30,10 @@ input[type=text]:focus {
 }
 
 input[type=text]:hover {
-box-shadow: 0 3px 20px rgba(255, 255, 255, 0.714);
+    box-shadow: 0 3px 20px rgba(255, 255, 255, 0.714);
 }
+
+/* Button Itinerary */
 
 #btnItinerary {
     display: inline-block;
@@ -41,11 +47,15 @@ box-shadow: 0 3px 20px rgba(255, 255, 255, 0.714);
     color: white;
     font-size: 14px;
     box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
-
-    transition: 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
+    -webkit-transition: 0.2s ease;
+    transition: 0.3s ease;
 }
 
 #btnItinerary:hover{
-    background: #195cc7;
+    background-color: #195cc7;
     box-shadow: 0 3px 20px rgba(255, 255, 255, 0.581);
+}
+
+#btnItinerary:active{
+    background-color: #317af0;
 }
