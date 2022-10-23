@@ -6,15 +6,24 @@
   <link rel="stylesheet" href="styles/menu.css">
   <script src="scripts/main.js"></script>
 </head>
-<header>  
-  <h1 style="font-family: Tahoma, sans-serif; color: rgb(255, 243, 229);" >
+
+<header> 
+  <img src="../utils/logo.png" style="width: 110px; padding-left: 10px;">
+  <h1 style="font-family: Tahoma, sans-serif; color: rgb(255, 255, 255); padding-left: 10px;" >
     MetroBoulotDodo
   </h1>
-  <input type="text" style="margin-left:30%;" placeholder="Station de départ">
+  <input type="text" style="margin-left:12%;" placeholder="Station de départ">
   <input type="text" style="margin-left: 5%;" placeholder="Station d'arrivée">
-  <input type="button" style="margin-left: 8%;" value="Trouvez votre itinéraire">
+  <input id="btnItinerary" type="button" style="margin-left: 6%;" value="Trouvez votre itinéraire">
 </header>
+
 <body>
-  <canvas id="map" width="1400px" height="1200px"></canvas>
+  <div style="margin-top: 120px; margin-left: 80px;">
+      <p style="font-family: Tahoma, sans-serif; margin-left: 120px; text-align: justify;">
+        Vous pouvez sélectionner deux points directement sur la carte
+      </p>
+      <canvas id="map" width="987px" height="952px"></canvas>
+  </div>
+    
 </body>
 </html>
