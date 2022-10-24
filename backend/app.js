@@ -5,8 +5,9 @@ const bodyParser = require('body-parser')
 const { Graphe } = require('./helpers/graphe.js')
 const { readSommets } = require('./helpers/data-extractor')
 const { readArcs } = require('./helpers/data-extractor')
+const { readPositions } = require('./helpers/data-extractor')
 const { parcoursProfondeur } = require('./helpers/connexe')
-const { initDijkstra, dijkstra, dijkstraTest } = require('./helpers/dijkstra');
+const { dijkstra } = require('./helpers/dijkstra');
 const { kruskal } = require('./helpers/kruskal.js');
 
 const app = express();
@@ -36,5 +37,11 @@ readSommets().then((sommets) => {
         app.get('/graphe', (req, res) => {
             res.send(graphe);
         })
+    })
+})
+
+readPositions().then((positions) => {
+    app.get('/positions', (req, res) => {
+        res.send(positions)
     })
 })

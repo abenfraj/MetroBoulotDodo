@@ -1,9 +1,11 @@
 const events = require("events");
 const fs = require("fs");
 const readline = require("readline");
+const http = require("http");
 
-const { Sommet } = require('./sommets')
-const { Arc } = require('./arcs')
+const { Sommet } = require("./sommets");
+const { Arc } = require("./arcs");
+const { Graphe } = require("./graphe");
 
 const readSommets = async () => {
   const sommets = [];
@@ -20,7 +22,9 @@ const readSommets = async () => {
         split = line.split(";");
         sommet.numSommet = parseInt(split[0].substring(2, 6));
         sommet.nomSommet = split[0].substring(7, split[0].length - 1);
-        sommet.numeroLigne = parseInt(split[1].substring(0, split[1].length - 1));
+        sommet.numeroLigne = parseInt(
+          split[1].substring(0, split[1].length - 1)
+        );
         sommet.siTerminus = split[2].split(" ")[0] == "true" ? true : false;
         sommet.branchement = parseInt(split[2].split(" ")[1]);
         sommets.push(sommet);
@@ -60,4 +64,28 @@ const readArcs = async () => {
   }
 };
 
-module.exports = { readSommets, readArcs };
+const readPositions = async () => {
+  const positions = [];
+  try {
+    const rl = readline.createInterface({
+      input: fs.createReadStream("../utils/pospoints.txt"),
+      crlfDelay: Infinity,
+    });
+
+    rl.on("line", (line) => {
+      split = line.split(";");
+      positions.push({
+        x: parseInt(split[0]),
+        y: parseInt(split[1]),
+        nomSommet: split[2],
+      });
+    });
+    await events.once(rl, "close");
+    return positions;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
+module.exports = { readSommets, readArcs, readPositions };
