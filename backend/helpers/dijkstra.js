@@ -57,9 +57,9 @@ const dijkstra = (graph, source, arrivee) => {
     });
     let min = Number.MAX_SAFE_INTEGER;
     graph.sommets.forEach((index) => {
-      if (!sommetsVisites[index] && distances[index] < min) {
-        min = distances[index];
-        sommetActuel = index;
+      if (!sommetsVisites[index.numSommet] && distances[index.numSommet] < min) {
+        min = distances[index.numSommet];
+        sommetActuel = index.numSommet;
       }
     });
   }

@@ -6,7 +6,8 @@ const { Graphe } = require('./helpers/graphe.js')
 const { readSommets } = require('./helpers/data-extractor')
 const { readArcs } = require('./helpers/data-extractor')
 const { parcoursProfondeur } = require('./helpers/connexe')
-const { initDijkstra, dijkstra, dijkstraTest } = require('./helpers/dijkstra')
+const { initDijkstra, dijkstra, dijkstraTest } = require('./helpers/dijkstra');
+const { kruskal } = require('./helpers/kruskal.js');
 
 const app = express();
 app.use(bodyParser.json());
@@ -25,6 +26,7 @@ readSommets().then((sommets) => {
         const graphe = new Graphe(sommets, arcs);
         parcoursProfondeur(graphe);
         dijkstra(graphe, 268, 24);
+        kruskal(graphe);
         app.get('/sommets', (req, res) => {
             res.send(sommets);
         })
