@@ -21,8 +21,10 @@ const parcoursProfondeur = (graphe) => {
     });
     if(graphe.sommets.every((sommet) => sommet.visite)) {
         console.log("Le graphe est connexe");
+        return true;
     } else {
         console.log("Le graphe n'est pas connexe");
+        return false;
     }
 }
 

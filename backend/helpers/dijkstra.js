@@ -66,11 +66,11 @@ const dijkstra = (graph, source, arrivee) => {
   const plusCourtChemin = [];
   let sommet = arrivee;
   while (sommet != source) {
-    plusCourtChemin.push(sommet);
+    plusCourtChemin.push(parseInt(sommet));
     sommet = predecesseurs[sommet];
   }
   plusCourtChemin.reverse();
-  console.log("plusCourtChemin :", plusCourtChemin);
+  return plusCourtChemin;
 };
 
 module.exports = {

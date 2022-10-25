@@ -26,7 +26,6 @@ readSommets().then((sommets) => {
     readArcs().then((arcs) => {
         const graphe = new Graphe(sommets, arcs);
         parcoursProfondeur(graphe);
-        dijkstra(graphe, 268, 24);
         kruskal(graphe);
         app.get('/sommets', (req, res) => {
             res.send(sommets);
@@ -36,6 +35,20 @@ readSommets().then((sommets) => {
         })
         app.get('/graphe', (req, res) => {
             res.send(graphe);
+        })
+        app.get('/dijkstra/:source/:arrivee', (req, res) => {
+            const source = req.params.source;
+            const arrivee = req.params.arrivee;
+            let chemin = dijkstra(graphe, source, arrivee);
+            res.json(chemin);
+        })
+        app.get('/connexe', (req, res) => {
+            const connexe = parcoursProfondeur(graphe);
+            res.send(connexe);
+        })
+        app.get('/kruskal', (req, res) => {
+            const arbre = kruskal(graphe);
+            res.send(arbre);
         })
     })
 })
