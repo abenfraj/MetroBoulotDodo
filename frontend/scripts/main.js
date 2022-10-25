@@ -2,29 +2,72 @@ window.onload = function () {
   const canvas = document.getElementById("map");
   const context = canvas.getContext("2d");
   const img = new Image();
-  img.src = "../utils/metrof_r.png";
-  // width = 987
-  // height = 952
+  img.src = "../utils/metrof_r.png"; 
   img.onload = () => {
-    console.log(img.height);
-    context.drawImage(img, 0, 0, img.width * 0.7, img.height * 0.7);
+    context.drawImage(img, 0, 0, img.width, img.height);
   };
 };
 
-$.ajax({
-  url: "http://localhost:3000/positions",
-  dataType: "json",
-  type: "GET",
-  async: false,
-  success: function (data) {
-    console.log("success");
-    console.log(data);
-  },
-});
+function tracerPoint(x, y) {
+  const canvas = document.getElementById("map");
+  const context = canvas.getContext("2d");
+  context.beginPath();
+  context.arc(x, y, 5, 0, 2 * Math.PI);
+  context.fill();
+}
 
-var canvas = document.getElementById("map");
-console.log(canvas);
-var ctx = canvas.getContext("2d");
-ctx.beginPath();
-ctx.arc(95, 50, 40, 0, 2 * Math.PI);
-ctx.stroke();
+function trouverItineraire(depart, arrivee) {
+  var positions;
+  $.ajax({
+    url: "http://localhost:3000/dijkstra/" + depart + "/" + arrivee,
+    dataType: "json",
+    type: "GET",
+    async: false,
+    success: function (data) {
+      for (var i = 0; i < data.length; i++){
+        positions = getPosition_NomSommet(getNomSommet_NumSommet(data[i]));
+        tracerPoint(positions[0], positions[1]);
+      }
+    },
+  });
+}
+
+function getNomSommet_NumSommet(numSommet) {
+  var nomSommet;
+  $.ajax({
+    url: "http://localhost:3000/sommets",
+    dataType: "json",
+    type: "GET",
+    async: false,
+    success: function (data) {
+      for (var i = 0; i < data.length; i++){
+        if(data[i].numSommet == numSommet) {
+          return nomSommet = data[i].nomSommet;
+          break;
+        }
+      }      
+    },
+  });
+  return nomSommet;
+}
+
+function getPosition_NomSommet(nomSommet) {
+  var x, y;
+  nomSommet = nomSommet.replaceAll(" ", "@");
+  $.ajax({
+    url: "http://localhost:3000/positions",
+    dataType: "json",
+    type: "GET",
+    async: false,
+    success: function (data) {
+      for (var i = 0; i < data.length; i++){
+        if(data[i].nomSommet == nomSommet) {
+          x = data[i].x;
+          y = data[i].y;
+          break;
+        }
+      }      
+    },
+  });
+  return [x, y];
+}
