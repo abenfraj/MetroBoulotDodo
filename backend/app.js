@@ -27,7 +27,7 @@ readSommets().then((sommets) => {
         const graphe = new Graphe(sommets, arcs);
         parcoursProfondeur(graphe);
         kruskal(graphe);
-        app.get('/  ', (req, res) => {
+        app.get('/sommets', (req, res) => {
             res.send(sommets);
         })
         app.get('/arcs', (req, res) => {
