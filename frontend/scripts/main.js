@@ -4,7 +4,8 @@ window.onload = function () {
   const img = new Image();
   img.src = "../utils/metrof_r.png"; 
   img.onload = () => {
-    context.drawImage(img, 0, 0, img.width, img.height);
+    context.drawImage(img, 0, 0);
+    tracerStations();
   };
 };
 
@@ -12,11 +13,33 @@ function tracerPoint(x, y) {
   const canvas = document.getElementById("map");
   const context = canvas.getContext("2d");
   context.beginPath();
-  context.arc(x, y, 5, 0, 2 * Math.PI);
+  context.arc(x, y, 4.5, 0, 2 * Math.PI);
+  context.fillStyle = 'white';
   context.fill();
+  context.lineWidth = 1.5;
+  context.strokeStyle = 'black';
+  context.stroke();
+}
+
+function tracerStations() {
+  var positions;
+  $.ajax({
+    url: "http://localhost:3000/sommets",
+    dataType: "json",
+    type: "GET",
+    async: false,
+    success: function (data) {
+      for (var i = 0; i < data.length; i++){
+          positions = getPosition_NomSommet(data[i].nomSommet);
+          tracerPoint(positions[0], positions[1]);
+      }      
+    },
+  });
 }
 
 function trouverItineraire(depart, arrivee) {
+  const canvas = document.getElementById("map");
+  const context = canvas.getContext("2d");
   var positions;
   $.ajax({
     url: "http://localhost:3000/dijkstra/" + depart + "/" + arrivee,
