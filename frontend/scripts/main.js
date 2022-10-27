@@ -12,12 +12,25 @@ window.onload = function () {
 function tracerPoint(x, y) {
   const canvas = document.getElementById("map");
   const context = canvas.getContext("2d");
-  context.beginPath();
-  context.arc(x, y, 4.5, 0, 2 * Math.PI);
-  context.fillStyle = 'white';
-  context.fill();
   context.lineWidth = 1.5;
   context.strokeStyle = 'black';
+  context.fillStyle = 'white';
+
+  context.beginPath();
+  context.arc(x, y, 4.5, 0, 2 * Math.PI);
+  context.fill();
+  context.stroke();
+}
+
+function tracerLigne(x1, y1, x2, y2) {
+  const canvas = document.getElementById("map");
+  const context = canvas.getContext("2d");
+  context.strokeStyle = 'black';
+  context.lineWidth = 3;
+
+  context.beginPath();
+  context.moveTo(x1, y1);
+  context.lineTo(x2, y2);
   context.stroke();
 }
 
@@ -32,6 +45,24 @@ function tracerStations() {
       for (var i = 0; i < data.length; i++){
           positions = getPosition_NomSommet(data[i].nomSommet);
           tracerPoint(positions[0], positions[1]);
+      }      
+    },
+  });
+}
+
+function afficherACPM() {
+  var positions1, positions2;
+  console.log("afficherACPM");
+  $.ajax({
+    url: "http://localhost:3000/kruskal",
+    dataType: "json",
+    type: "GET",
+    async: false,
+    success: function (data) {
+      for (var i = 0; i < data.length; i++){
+          positions1 = getPosition_NomSommet(getNomSommet_NumSommet(data[i].numSommet1));
+          positions2 = getPosition_NomSommet(getNomSommet_NumSommet(data[i].numSommet2));
+          tracerLigne(positions1[0], positions1[1], positions2[0], positions2[1]);
       }      
     },
   });
