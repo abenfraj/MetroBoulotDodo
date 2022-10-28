@@ -23,8 +23,18 @@ const union = (parent, rank, x, y) => {
     }
 };
 
+const supprimerDoublons = (sommets) => {
+    const sommetsUniques = [];
+    sommets.forEach((sommet) => {
+        if (!sommetsUniques.some((sommetUnique) => sommetUnique.nomSommet === sommet.nomSommet)) {
+            sommetsUniques.push(sommet);
+        }
+    });
+    return sommetsUniques;
+};
+
 const kruskal = (graphe) => {
-    const sommets = graphe.sommets;
+    const sommets = supprimerDoublons(graphe.sommets);
     const arcs = graphe.arcs;
     const arbre = [];
     let i = 0;
