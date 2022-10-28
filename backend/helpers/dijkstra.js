@@ -69,6 +69,7 @@ const dijkstra = (graph, source, arrivee) => {
     plusCourtChemin.push(parseInt(sommet));
     sommet = predecesseurs[sommet];
   }
+  plusCourtChemin.push(parseInt(source));
   plusCourtChemin.reverse();
   return plusCourtChemin;
 };
