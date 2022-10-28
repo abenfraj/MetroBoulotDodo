@@ -107,8 +107,8 @@ $(document).ready(function(){
       tracerStationActuelle(this.getAttribute("cx"), this.getAttribute("cy"));
     } else {
       console.log("Station d'arrivée: " + this.id);
-      afficherItineraire(localStorage.getItem("depart"), this.id);
       effacerLignesActuelles();
+      afficherItineraire(localStorage.getItem("depart"), this.id);
       localStorage.removeItem("depart");
     }
   });
