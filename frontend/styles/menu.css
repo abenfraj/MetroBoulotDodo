@@ -13,7 +13,8 @@ header  {
 
 /* Input text */
 
-input[type=text] {
+select {
+    cursor: pointer;
     font-family: Tahoma, sans-serif;
     height: 30px;
     width: 200px;
@@ -24,12 +25,12 @@ input[type=text] {
     transition: .2s ease-in-out;
 }
 
-input[type=text]:focus {
+select:focus {
     outline: none;
     border: 3.5px solid #2a77f3;
 }
 
-input[type=text]:hover {
+select:hover {
     box-shadow: 0 3px 20px rgba(255, 255, 255, 0.714);
 }
 
@@ -60,5 +61,11 @@ input[type=text]:hover {
     background-color: #317af0;
 }
 
-/* Map */
-
+/* Disable the blue highlight when you select the image */
+img {  
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+ }
