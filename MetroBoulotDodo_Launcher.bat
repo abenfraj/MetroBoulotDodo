@@ -1,10 +1,7 @@
 cd backend
-npm install
-pause
+call npm install
 cd ..
+start powershell -NoExit -Command "cd backend; node app.js"
 cd frontend
+sleep 50
 page.html
-cd ..
-cd backend
-node app.js
-pause
