@@ -105,6 +105,7 @@ p {
   flex-grow: 1;
   flex-basis: 10rem;
   max-width: 40rem;
+  background-color: cyan;
   border-radius: 5px;
   height: 10rem;
   margin-right: 50px;
@@ -115,4 +116,13 @@ background: rgba(204, 204, 204, 0.5);
   font-size: 2.5em;
   color: #aaa;
   overflow: hidden;
+}
+
+@media (max-width: 1400px) {
+  .content {
+    flex-direction: column !important;
+    height: 1800px;
+    align-items: center;
+    margin-bottom: 50px;
+  }
 }

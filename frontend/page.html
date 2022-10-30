@@ -86,7 +86,6 @@
       </div>
     </header>
     <div style="margin-top: 200px; margin-left: 80px">
-      <p></p>
       <p>
         Vous pouvez sélectionner deux points directement sur la carte pour
         trouver votre itinéraire
@@ -94,13 +93,14 @@
       <p>L'ACPM peut prendre du temps à s'afficher</p>
       <p id="temps-en-secondes">Temps total de l'ACPM :</p>
       <div
+        class="content"
         style="
           display: flex;
           flex-direction: row;
           justify-content: space-between;
         "
       >
-        <div id="map" style="height: 1000px">
+        <div style="height: 1000px; width: 1000px; display: flex">
           <img
             src="../utils/metrof_r.png"
             style="position: absolute; opacity: 0.8"
