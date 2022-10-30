@@ -105,13 +105,13 @@ p {
   flex-grow: 1;
   flex-basis: 10rem;
   max-width: 40rem;
-  background-color: gray;
   border-radius: 5px;
   height: 10rem;
   margin-right: 50px;
   padding: 30px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-  opacity: 0.9;
+  background: rgb(204, 204, 204);
+background: rgba(204, 204, 204, 0.5);
   font-size: 2.5em;
   color: #aaa;
   overflow: hidden;
