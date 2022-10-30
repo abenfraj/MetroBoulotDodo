@@ -41,19 +41,30 @@
           style="
             display: flex;
             flex-direction: row;
-            margin-top: 30px;
+            margin-top: 10px;
             margin-left: 300px;
             margin-right: 300px;
             justify-content: space-evenly;
           "
         >
-          <select id="station_Depart"></select>
-          <select id="station_Arrivee"></select>
+          <div style="margin-left: 7%;">
+            <p style="font-family: Tahoma, sans-serif; color: rgb(0, 0, 0); margin: 3%;">
+              Station de départ
+            </p>
+            <select id="station_Depart" ></select>
+          </div>
+          <div style="margin-left: 7%;">
+            <p style="font-family: Tahoma, sans-serif; color: rgb(0, 0, 0); margin: 3%;">
+              Station d'arrivée
+            </p>
+            <select id="station_Arrivee" ></select>
+          </div>
           <input
             id="btnItinerary"
             type="button"
             value="Trouvez votre itinéraire"
             onclick="trouverItineraire()"
+            style="margin: 2% 2% 2% 4%;"
           />
         </div>
       </div>

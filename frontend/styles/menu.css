@@ -34,6 +34,22 @@ select:hover {
     box-shadow: 0 3px 20px rgba(255, 255, 255, 0.714);
 }
 
+/* Button ACPM */
+
+#btnACPM {
+    background-color: #426d95;
+    border: 0px solid #ffffff;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
+    height: 30px;
+    margin-left: 10px;
+    width: 175px;
+    box-shadow: 0 4px 14px 0 rgba(65, 103, 168, 0.382);
+}
+
 /* Button Itinerary */
 
 #btnItinerary {
