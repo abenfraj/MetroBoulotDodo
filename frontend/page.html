@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Metro, Boulot, Dodo</title>
-    <link rel="icon" type="image/x-icon" href="../utils/logo.png">
+    <link rel="icon" type="image/x-icon" href="../utils/logo.png" />
     <link rel="stylesheet" href="styles/menu.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="scripts/main.js"></script>
@@ -11,14 +11,18 @@
 
   <body>
     <header>
-      <div style="display: flex; flex-direction: column; width: 100%">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-top: 20px;
+        "
+      >
         <div
           style="display: flex; flex-direction: row; justify-content: center"
         >
-          <img
-            src="../utils/logo.png"
-            style="width: 110px;"
-          />
+          <img src="../utils/logo.png" style="width: 100px" />
           <h1
             style="
               font-family: Tahoma, sans-serif;
@@ -47,51 +51,77 @@
             justify-content: space-evenly;
           "
         >
-          <div style="margin-left: 7%;">
-            <p style="font-family: Tahoma, sans-serif; color: rgb(0, 0, 0); margin: 3%;">
+          <div>
+            <p
+              style="
+                font-family: Tahoma, sans-serif;
+                color: rgb(0, 0, 0);
+                margin: 3%;
+              "
+            >
               Station de départ
             </p>
-            <select id="station_Depart" ></select>
+            <select id="station_Depart"></select>
           </div>
-          <div style="margin-left: 7%;">
-            <p style="font-family: Tahoma, sans-serif; color: rgb(0, 0, 0); margin: 3%;">
+          <div>
+            <p
+              style="
+                font-family: Tahoma, sans-serif;
+                color: rgb(0, 0, 0);
+                margin: 3%;
+              "
+            >
               Station d'arrivée
             </p>
-            <select id="station_Arrivee" ></select>
+            <select id="station_Arrivee"></select>
           </div>
           <input
             id="btnItinerary"
             type="button"
             value="Trouvez votre itinéraire"
             onclick="trouverItineraire()"
-            style="margin: 2% 2% 2% 4%;"
+            style="margin: 2% 2% 2% 4%"
           />
         </div>
       </div>
     </header>
     <div style="margin-top: 200px; margin-left: 80px">
-      <p
+      <p></p>
+      <p>
+        Vous pouvez sélectionner deux points directement sur la carte pour
+        trouver votre itinéraire
+      </p>
+      <p>L'ACPM peut prendre du temps à s'afficher</p>
+      <p id="temps-en-secondes">Temps total de l'ACPM :</p>
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        "
       >
-        
-      </p>
-      <p>
-        Vous pouvez sélectionner deux points directement sur la carte
-      </p>
-      <p>
-        L'ACPM peut prendre du temps à s'afficher
-      </p>
-      <p id="loading-percentage"></p>
-      <div id="map" style="height: 1000px">
-        <img
-          src="../utils/metrof_r.png"
-          style="position: absolute; opacity: 0.8"
-        />
-        <svg
-          id="svg_map"
-          width="987"
-          height="952"
-          style="z-index: 1; position: absolute"
-        ></svg>
+        <div id="map" style="height: 1000px">
+          <img
+            src="../utils/metrof_r.png"
+            style="position: absolute; opacity: 0.8"
+          />
+          <svg
+            id="svg_map"
+            width="987"
+            height="952"
+            style="z-index: 1; position: absolute"
+          ></svg>
+        </div>
+        <div
+          class="container beautiful"
+          id="detailsItineraire"
+          style="
+            overflow: auto;
+            height: 890px;
+            width: 700px;
+            padding-right: 20px;
+          "
+        ></div>
       </div>
     </div>
   </body>

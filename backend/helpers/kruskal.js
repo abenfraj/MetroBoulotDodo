@@ -1,5 +1,3 @@
-const { Graphe } = require("./graphe");
-
 const find = (parent, i) => {
   if (parent[i] == i) {
     return i;
@@ -18,20 +16,6 @@ const union = (parent, rank, x, y) => {
     parent[yroot] = xroot;
     rank[xroot] += 1;
   }
-};
-
-const supprimerDoublonsSommets = (sommets) => {
-  const sommetsUniques = [];
-  sommets.forEach((sommet) => {
-    if (
-      !sommetsUniques.some(
-        (sommetUnique) => sommetUnique.nomSommet === sommet.nomSommet
-      )
-    ) {
-      sommetsUniques.push(sommet);
-    }
-  });
-  return sommetsUniques;
 };
 
 const kruskal = (graphe) => {
