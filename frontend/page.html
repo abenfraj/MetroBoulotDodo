@@ -1,36 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>MetroBoulotDodo</title>
-  <link rel="stylesheet" href="styles/menu.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="scripts/main.js"></script>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Metro, Boulot, Dodo</title>
+    <link rel="icon" type="image/x-icon" href="../utils/logo.png">
+    <link rel="stylesheet" href="styles/menu.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="scripts/main.js"></script>
+  </head>
 
-<header>
-  <img src="../utils/logo.png" style="width: 110px; padding-left: 10px;">
-  <h1 style="font-family: Tahoma, sans-serif; color: rgb(255, 255, 255); padding-left: 10px;" >
-    MetroBoulotDodo
-  </h1>
-  <select id="station_Depart" style="margin-left: 9%;"></select>
-  <select id="station_Arrivee" style="margin-left: 6%;"></select>
-  <input id="btnItinerary" type="button" style="margin-left: 9%;" value="Trouvez votre itinéraire" onclick="trouverItineraire()">
-</header>
-
-<body>
-
-  <div style="margin-top: 120px; margin-left: 80px;">
-    <input id="btnACPM" type="button" value="Afficher ACPM" onclick="afficherACPM()">
-    <p style="font-family: Tahoma, sans-serif; margin-left: 120px; text-align: justify;">
-      Vous pouvez sélectionner deux points directement sur la carte
-    </p>
-    <div id="map" >
-      <img src="../utils/metrof_r.png" style="position:absolute; opacity: 0.8;">
-      <svg id = "svg_map" width="987" height="952" style="z-index:1; position:absolute">
-      </svg>
+  <body>
+    <header>
+      <div style="display: flex; flex-direction: column; width: 100%">
+        <div
+          style="display: flex; flex-direction: row; justify-content: center"
+        >
+          <img
+            src="../utils/logo.png"
+            style="width: 110px;"
+          />
+          <h1
+            style="
+              font-family: Tahoma, sans-serif;
+              color: rgb(255, 255, 255);
+              padding-left: 10px;
+            "
+          >
+            Metro, Boulot, Dodo
+          </h1>
+        </div>
+        <div style="display: flex; justify-content: center">
+          <input
+            id="btnACPM"
+            type="button"
+            value="Afficher ACPM"
+            onclick="afficherACPM()"
+          />
+        </div>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            margin-top: 30px;
+            margin-left: 300px;
+            margin-right: 300px;
+            justify-content: space-evenly;
+          "
+        >
+          <select id="station_Depart"></select>
+          <select id="station_Arrivee"></select>
+          <input
+            id="btnItinerary"
+            type="button"
+            value="Trouvez votre itinéraire"
+            onclick="trouverItineraire()"
+          />
+        </div>
+      </div>
+    </header>
+    <div style="margin-top: 200px; margin-left: 80px">
+      <p
+      >
+        
+      </p>
+      <p>
+        Vous pouvez sélectionner deux points directement sur la carte
+      </p>
+      <p>
+        L'ACPM peut prendre du temps à s'afficher
+      </p>
+      <p id="loading-percentage"></p>
+      <div id="map" style="height: 1000px">
+        <img
+          src="../utils/metrof_r.png"
+          style="position: absolute; opacity: 0.8"
+        />
+        <svg
+          id="svg_map"
+          width="987"
+          height="952"
+          style="z-index: 1; position: absolute"
+        ></svg>
+      </div>
     </div>
-  </div>
-    
-</body>
+  </body>
 </html>

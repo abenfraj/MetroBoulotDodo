@@ -12,9 +12,10 @@ function setSelectsStations() {
     type: "GET",
     async: false,
     success: function (data) {
-      for (var i = 0; i < data.length; i++){
-        options += "<option value='" + data[i].numSommet + "'>" + data[i].nomSommet + "</option>";
-      }      
+      const uniqueData = data.filter((v, i ,a) => a.findIndex(t => (t.nomSommet === v.nomSommet)) === i);
+      for (var i = 0; i < uniqueData.length; i++){
+        options += "<option value='" + uniqueData[i].numSommet + "'>" + uniqueData[i].nomSommet + "</option>";
+      }
     },
   });
   document.getElementById("station_Depart").innerHTML = options;
@@ -140,20 +141,25 @@ function afficherItineraire(numDepart, numArrivee) {
 
 function afficherACPM() {
   effacerLignesActuelles();
-  var positions1, positions2;
+  let successData = [];
+  let positions1, positions2;
   $.ajax({
     url: "http://localhost:3000/kruskal",
     dataType: "json",
     type: "GET",
     async: false,
     success: function (data) {
-      for (var i = 0; i < data.length; i++){
-          positions1 = getPosition_NomSommet(getNomSommet_NumSommet(data[i].numSommet1));
-          positions2 = getPosition_NomSommet(getNomSommet_NumSommet(data[i].numSommet2));
-          tracerLigne(positions1[0], positions1[1], positions2[0], positions2[1]);
-      }      
+      console.log(data);
+      successData = data;
     },
   });
+  console.log(successData);
+  for (var i = 0; i < successData.length; i++){
+    document.getElementById("loading-percentage").innerHTML = i + " / " + successData.length;
+    positions1 = getPosition_NomSommet(getNomSommet_NumSommet(successData[i].numSommet1));
+    positions2 = getPosition_NomSommet(getNomSommet_NumSommet(successData[i].numSommet2));
+    tracerLigne(positions1[0], positions1[1], positions2[0], positions2[1]);
+}      
 }
 
 function getNomSommet_NumSommet(numSommet) {
